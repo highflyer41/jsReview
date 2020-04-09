@@ -6,8 +6,51 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="xtable">Multiplication table to 12:<br></div>
-    <div id="primetable">Prime Numbers to 100:<br></div>
+
+  <div>
+    <label for="user">Enter Username</label><br>
+    <input type="text" name="user" id="user">
+    <button id="userbtn">Submit</button>
+  </div><br>
+
+  <div>
+    <label for="num">Enter a number:</label><br>
+    <input type="text" name="num" id="num"><br>
+    <label for="sign">Enter + or *:</label><br>
+    <input type="text" name="sign" id="sign"><br>
+    <button id="numbtn">Submit</button><br>
+    <div id="numbox"></div>
+  </div><br>
+
+    <div id="xtable">Multiplication table to 12:<br></div><br>
+    <div id="primetable">Prime Numbers to 100:<br></div><br>
+
+    <div id="guessbox">
+      <label for="guess">Guessing Game. Enter an integer:</label><br>
+      <input type="text" name="guess" id="guess">
+      <button id="guessbtn">Guess</button><br>
+    </div><br>
+
+    <div id="leapyear">
+      Next 20 leap years:
+    </div><br>
+
+    <div id="largestElement">
+      <button id="largest">Largest Element</button> 
+      <button id="reverse">Reverse</button>
+      <button id="oddelements">Odd Elements</button>
+      <button id="totalelements">Total Elements</button><br>
+      <label for="checklist">Check element is in list: </label>
+      <input type="text" name="checklist" id="checklist">
+      <button id="listbtn">Check</button><br>
+      
+    </div><br>
+
+    <div id="pdromebox">
+      <label for="pdrome">Check string is palindrome: </label>
+      <input type="text" name="pdrome" id="pdrome">
+      <button id="pdromebtn">Check</button><br>
+    </div>
 
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
