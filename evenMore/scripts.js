@@ -67,16 +67,20 @@ for (let i = 0; i < 100; i++) {
 //guessing game
 let guess = $('#guess');
 let guessbtn = $('#guessbtn');
-let guessnum = parseInt((Math.random()*100)+1);
+let guessnum = Math.floor((Math.random()*100)+1);
 let tries = 0;
 guessbtn.click(()=>{
     if(guess.val() == guessnum){
-        $('#guessbox').append("You got it in: " + tries + " tries!")
+        $('#guessbox').append("You got it in: " + tries + " tries! New Game started!<br>");
+        guessnum = Math.floor((Math.random()*100)+1);
+        tries = 0;
     } else if( guess.val() > guessnum){
         $('#guessbox').append("Too high ");
+        guess.focus();
         tries++;
     } else {
         $('#guessbox').append("Too low ");
+        guess.focus();
         tries++;
     }
 });
@@ -137,4 +141,109 @@ $('#pdromebtn').click(()=>{
     } else {
         $('#pdromebox').append(s + " is NOT a palindrome.<br>");
     }
+});
+
+//for loop add numbers
+let addarr = [1,2,3,4,5,6,7];
+$('#forloopbtn').click(()=>{
+    let result = 0;
+    for (let i = 0; i < addarr.length; i++) {
+        result += addarr[i];
+    };
+
+    $('#addbox').append("Sum is: " + result + "<br>");
+});
+//while loop add
+$('#whilebtn').click(()=>{
+    let i = 0;
+    let result = 0;
+    while(i < addarr.length){
+        result += addarr[i];
+        i++;
+    };
+
+    $('#addbox').append("Sum is: " + result + "<br>");
+});
+//recursion add
+$('#recursionbtn').click(()=>{
+    let recursionFunction = function(arr){
+        if(arr.length == 1){
+            return arr[0];
+        } else{
+            return arr.shift() + recursionFunction(arr);
+        };
+    };
+
+    $('#addbox').append("Sum is: " + recursionFunction(addarr) + "<br>");
+});
+
+//on all function
+function on_all(arr){
+    arr.forEach((element)=>{
+        let num = Math.sqrt(element);
+        if(Math.floor(num) == num && num != 0){
+            $('#psquarebox').append(element + " ");
+        };
+    });
+};
+let allarr = Array.from(new Array(200), (x, index)=>index+1);
+on_all(allarr);
+
+//concat lists
+let list1 = ['a','b','c','d','e'];
+let list2 = [1,2,3,4,5];
+function concatFunction(l1, l2){
+    $('#concatbox').append('Concat result: ' + l1.concat(l2) + "<br>");
+};
+concatFunction(list1, list2);
+//concat alternate elements
+function concatAlternate(l1, l2){
+    let combinedarr = [];
+    for (let i = 0; i < l1.length; i++) {
+        combinedarr.push(l1[i]);
+        combinedarr.push(l2[i]);
+    };
+    $('#concatbox').append('Alternating elements: ' + combinedarr + "<br>");
+};
+concatAlternate(list1, list2);
+//concat sort
+function concatSort(l1, l2){
+    $('#concatbox').append('Concat sort result: ' + l1.concat(l2).sort() + "<br>");
+};
+concatSort(list1, list2);
+//rotate lists
+function rotateArr(list, num){
+    for (let i = 0; i < num; i++) {
+        let temp = list.shift();
+        list.push(temp); 
+    };
+    $('#concatbox').append('Rotate elements: ' + list + "<br>");
+};
+rotateArr(list2, 2);
+
+//Fibonacci numbers
+let fibArr = [1,1];
+function fibonacci(num){
+    for (let i = 2; i < num; i++) {
+        fibArr[i] = fibArr[i-1] + fibArr[i-2];
+    };
+    $('#fibonaccibox').append(fibArr.join(', '));
+};
+fibonacci(100);
+
+//number to array
+$('#numarraybtn').click(()=>{
+    let numarray = $('#numarrayinput').val();
+    $('#numarraybox').append(numarray.split('').join(', ') + "<br>");
+})
+
+//pig latin
+$('#piglatinbtn').click(()=>{
+    let sentence = $('#piglatininput').val();
+    sentence = sentence.split(' ');
+    let result = '';
+    sentence.forEach((element)=>{
+        result += element.slice(1) + element.slice(0,1) + "ay "
+    })
+    $('#piglatinbox').append(result + "<br>");
 });
